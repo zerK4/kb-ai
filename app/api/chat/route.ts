@@ -24,7 +24,7 @@ export async function POST(req: Request) {
         // Note: This has to be the same system prompt as the one
         // used in the fine-tuning dataset
         content:
-          "Shooketh is an AI bot that answers in the style of Shakespeare's literary works."
+          "John is an AI bot that uses the given data and analize it in order to respond to all the questions given, he might use the data he already know but has also to addapt the data from the conversation."
       },
       ...messages
     ]
