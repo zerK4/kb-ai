@@ -12,7 +12,7 @@ function Header() {
   }
 
   return (
-    <div className='flex h-20 items-center justify-between bg-black px-10 text-white'>
+    <div className='flex h-20 items-center justify-between bg-secondary px-10 text-white'>
       <div className='logo'>Logo</div>
       <div className=''>
         <UserSpace />

@@ -23,23 +23,23 @@ export const renderMessages = ({
       <div
         key={i}
         className={clsx(
-          'flex w-full items-center justify-center border-b border-gray-200 py-8',
-          message.role === 'user' ? 'bg-background' : 'bg-contrast'
+          'flex w-full items-center justify-center border-b border-accent py-8',
+          message.role === 'user' ? 'bg-background' : 'bg-secondary'
         )}
       >
         <div className='flex w-full max-w-screen-md items-start space-x-4 px-5 sm:px-0'>
           <div
-            className={clsx(
+            className={`${clsx(
               message.role === 'assistant'
-                ? 'bg-background'
-                : 'bg-contrast p-1.5 text-white'
-            )}
+                ? ' border-primary/50'
+                : ' border-primary/30 p-1.5 text-white'
+            )} rounded-md border`}
           >
             {message.role === 'user' ? (
               <UserIcon />
             ) : (
               <Image
-                src='/chat-logo.jpg'
+                src='/chat-logo.png'
                 alt='Shakespeare'
                 width={36}
                 height={36}
