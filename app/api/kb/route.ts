@@ -16,7 +16,7 @@ export async function POST(req: Request) {
       },
     });
 
-    console.log(data, 'tje data');
+    console.log(data.content.toString('utf8'), 'tje data');
     return NextResponse.json({
       data: data,
       status: 200,

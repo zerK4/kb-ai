@@ -77,4 +77,24 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  pre {
+    @apply my-4;
+  }
+
+  pre > button {
+    @apply hover:bg-background ease-in-out duration-300 p-2 rounded-md;
+  }
+
+  ol > li {
+    @apply list-disc ml-4;
+  }
+
+  ol > ul > li {
+    @apply list-disc ml-4;
+  }
+
+  p > a {
+    @apply text-orange-400/50 hover:text-orange-400/100 ease-in-out duration-300 p-2;
+  }
 }

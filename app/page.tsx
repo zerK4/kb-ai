@@ -6,6 +6,7 @@ import clsx from 'clsx';
 import { LoadingCircle, SendIcon } from './icons';
 import Textarea from 'react-textarea-autosize';
 import { renderMessages } from '@/components/MainPage';
+import { ChatScrollAnchor } from '@/components/chat-scroll-anchor';
 
 export default function Chat() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -23,12 +24,15 @@ export default function Chat() {
   const disabled = isLoading || input.length === 0;
 
   return (
-    <main className='flex flex-col items-center justify-between pb-40'>
-      {renderMessages({
-        messages,
-        setInput,
-        inputRef,
-      })}
+    <main className='flex flex-col items-center justify-between'>
+      <div className='mb-20 w-full max-w-screen-md pt-20'>
+        {renderMessages({
+          messages,
+          setInput,
+          inputRef,
+          isLoading,
+        })}
+      </div>
       <div className='fixed bottom-0 flex w-full flex-col items-center space-y-3 bg-background p-5 pb-3 sm:px-0'>
         <form
           ref={formRef}

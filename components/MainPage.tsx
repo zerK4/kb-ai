@@ -3,6 +3,9 @@
 import clsx from 'clsx';
 import { UserIcon } from 'lucide-react';
 import Image from 'next/image';
+import { ChatMessage } from './ChatMessage';
+import { Separator } from './ui/separator';
+import { ChatScrollAnchor } from './chat-scroll-anchor';
 
 const examples = [
   'How to add a language in AEM?',
@@ -13,43 +16,19 @@ export const renderMessages = ({
   messages,
   setInput,
   inputRef,
+  isLoading,
 }: {
   messages: any;
   setInput: any;
   inputRef: any;
+  isLoading: any;
 }) => {
   return messages.length > 0 ? (
     messages.map((message: any, i: number) => (
-      <div
-        key={i}
-        className={clsx(
-          'flex w-full items-center justify-center border-b border-accent py-8',
-          message.role === 'user' ? 'bg-background' : 'bg-secondary'
-        )}
-      >
-        <div className='flex w-full max-w-screen-md items-start space-x-4 px-5 sm:px-0'>
-          <div
-            className={`${clsx(
-              message.role === 'assistant'
-                ? ' border-primary/50'
-                : ' border-primary/30 p-1.5 text-white'
-            )} rounded-md border`}
-          >
-            {message.role === 'user' ? (
-              <UserIcon />
-            ) : (
-              <Image
-                src='/chat-logo.png'
-                alt='Shakespeare'
-                width={36}
-                height={36}
-              />
-            )}
-          </div>
-          <div className='prose prose-p:leading-relaxed mt-1 w-full break-words'>
-            {message.content}
-          </div>
-        </div>
+      <div key={i} className='w-full'>
+        <ChatMessage message={message} />
+        {i < messages.length - 1 && <Separator className='my-4 md:my-8' />}
+        <ChatScrollAnchor trackVisibility={isLoading} />
       </div>
     ))
   ) : (
@@ -57,7 +36,7 @@ export const renderMessages = ({
       <div className='flex flex-col space-y-4 p-7 sm:p-10'>
         <Image
           src='/chat-logo.png'
-          alt='Shooketh'
+          alt='John AI'
           width={40}
           height={40}
           className='h-20 w-20'
